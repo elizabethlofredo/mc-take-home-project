@@ -1,4 +1,21 @@
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  height: 100vh;
+}
+
+.filter-container {
+  margin-top: 40px
+}
+
 .courses {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin: 40px auto;
   max-width: 90%;
 }

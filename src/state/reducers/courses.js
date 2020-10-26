@@ -5,6 +5,7 @@ import { getCourses, addFavorite, removeFavorite } from '../actions/courses';
 const initialState = {
   loading: false,
   list: [],
+  reachedLastPage: false
 };
 
 const actionHandlers = {
@@ -13,6 +14,7 @@ const actionHandlers = {
   },
   [getCourses.fulfilled]: (state, { payload }) => {
     state.list = [ ...state.list, ...payload];
+    if (!payload.length) state.reachedLastPage = true;
     state.loading = false;
   },
   [addFavorite.fulfilled]: (state, { payload: { courseId } }) => {

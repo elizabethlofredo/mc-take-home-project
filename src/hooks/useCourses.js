@@ -1,15 +1,15 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getCourses, addFavorite, removeFavorite } from '../state/actions/courses';
 
-const PAGE_LIMIT = 20;
+const PAGE_LIMIT = 30;
 
 export default () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(0);
   const [favorites, setFavorites] = useState(false);
-  const { list: courses, loading } = useSelector(({ courses }) => courses);
+  const { list: courses, loading, reachedLastPage } = useSelector(({ courses }) => courses);
 
   useEffect(() => {
     dispatch(getCourses(PAGE_LIMIT, currentPage));
@@ -27,11 +27,15 @@ export default () => {
     else dispatch(addFavorite(data))
   }, [dispatch]);
 
-  const filterCourses = () => favorites ? courses.filter(({ my_list }) => my_list) : courses;
+  const filteredCourses = useMemo(
+    () => favorites ? courses.filter(({ my_list }) => my_list) : courses,
+    [favorites, courses]
+  );
 
   return {
     loading,
-    courses: filterCourses(),
+    courses: filteredCourses,
+    hasMoreCourses: !reachedLastPage,
     handleFavorites,
     getNextPage,
     onFilterFavorites: () => setFavorites(!favorites),
