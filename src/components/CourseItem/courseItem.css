@@ -1,0 +1,32 @@
+.course {
+  border: 4px;
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin: 10px;
+  min-width: 320px;
+  max-height: 110px;
+}
+
+img {
+  max-width: 110px;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+p,h5 {
+  font-weight: 400;
+  margin: 0;
+}
+
+p {
+ font-size: 12px;
+ opacity: .6;
+}
