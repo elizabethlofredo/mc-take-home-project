@@ -1,8 +1,8 @@
 import httpClient from './httpClient';
 
 class CoursesServices {
-  static getCourses() {
-    return httpClient.get('/courses');
+  static getCourses(limit, offset) {
+    return httpClient.get(`/courses?page[limit]=${limit}&page[offset]=${offset}`);
   }
 
   static addFavorite(data) {
