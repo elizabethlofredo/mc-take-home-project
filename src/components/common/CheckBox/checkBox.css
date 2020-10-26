@@ -1,15 +1,13 @@
-.checkbox-container {
+.checkbox {
   color: var(--white);
   cursor: pointer;
-  display: block;
   font-size: 14px;
   line-height: 2;
   padding-left: 30px;
   position: relative;
-  margin-right: 30px;
 }
 
-.checkbox-container input {
+.checkbox input {
   cursor: pointer;
   height: 0;
   opacity: 0;
@@ -33,7 +31,7 @@
   position: absolute;
 }
 
-.checkbox-container input:checked ~ .checkmark::after {
+.checkbox input:checked ~ .checkmark::after {
   border: solid var(--green);
   border-width: 0 2px 2px 0;
   display: block;

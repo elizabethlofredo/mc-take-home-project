@@ -5,7 +5,7 @@ import coursesServices from '../../services/coursesService';
 export const getCourses = createAsyncThunk('/courses', async (params) => {
   try {
     const { data } = await coursesServices.getCourses(params);
-    return data;
+    return { data, firstRequest: params.firstRequest };
   } catch ({ response: { data } }) {
     // TODO: handle error
   }
@@ -15,7 +15,7 @@ export const addFavorite = createAsyncThunk('/favorites/add', async course => {
   try {
     const { data } = await coursesServices.addFavorite(course);
     return data.course_id;
-  } catch ({ response  }) {
+  } catch ({ response }) {
     // TODO: handle error
   }
 });

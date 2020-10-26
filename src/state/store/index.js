@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-
+import { persistStore } from 'redux-persist';
 import reducer from '../reducers';
 
 const getStore = () => {
@@ -7,7 +7,9 @@ const getStore = () => {
     reducer,
   });
 
-  return store;
+  const persistor = persistStore(store);
+
+  return { store, persistor };
 };
 
 export default getStore;

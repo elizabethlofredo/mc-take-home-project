@@ -9,7 +9,6 @@ import './courses.css';
 
 const Courses = () => {
   const {
-    loading,
     courses,
     getNextPage,
     handleFavorites,

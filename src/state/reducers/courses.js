@@ -8,9 +8,10 @@ const initialState = {
 };
 
 const actionHandlers = {
-  [getCourses.fulfilled]: (state, { payload }) => {
-    state.list = [ ...state.list, ...payload];
-    if (!payload.length) state.reachedLastPage = true;
+  [getCourses.fulfilled]: (state, { payload: { data, firstRequest} }) => {
+    if (firstRequest) state.list = data
+    else state.list = [...state.list, ...data];
+    if (!data.length) state.reachedLastPage = true;
   },
   [addFavorite.fulfilled]: (state, { payload: course_id }) => {
     const index = state.list.findIndex(({ id }) => id === course_id);

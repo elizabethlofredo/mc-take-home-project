@@ -9,15 +9,15 @@ export default () => {
   const dispatch = useDispatch();
   const [offset, setOffset] = useState(0);
   const [favorites, setFavorites] = useState(false);
-  const { list: courses, loading, reachedLastPage } = useSelector(({ courses }) => courses);
+  const { list: courses, reachedLastPage } = useSelector(({ courses }) => courses);
 
-  const getNextPage = () => {
-    dispatch(getCourses({ limit: PAGE_LIMIT, offset: offset * PAGE_LIMIT }));
+  const getNextPage = (firstRequest = false) => {
+    dispatch(getCourses({ firstRequest, limit: PAGE_LIMIT, offset: offset * PAGE_LIMIT }));
     setOffset(offset + 1);
   };
 
   useEffect(() => {
-    getNextPage();
+    getNextPage(true);
   }, []);
 
   const handleFavorites = useCallback((id, onFavorites) => {
@@ -32,7 +32,6 @@ export default () => {
   );
 
   return {
-    loading,
     courses: filteredCourses,
     hasMoreCourses: !reachedLastPage,
     handleFavorites,
