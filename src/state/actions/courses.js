@@ -2,10 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import coursesServices from '../../services/coursesService';
 
-export const getCourses = createAsyncThunk('/courses', async () => {
+export const getCourses = createAsyncThunk('/courses', async (limit, offset) => {
   try {
-    const { data } = await coursesServices.getCourses();
-    return data;
+    // TODO: uncomment when connect with backend
+    // const data = await coursesServices.getCourses(limit, offset);
+    return [];
   } catch ({ response: { data } }) {
     // TODO: handle error
   }
