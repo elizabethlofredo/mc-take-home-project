@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getCourses } from '../state/actions/courses';
+import { getCourses, addFavorite, removeFavorite } from '../state/actions/courses';
 
 export default () => {
   const dispatch = useDispatch();
@@ -12,8 +12,15 @@ export default () => {
    // dispatch(getCourses());
   }, []);
 
+  const handleFavorites = useCallback((id, onFavorites) => {
+    const data = { "course_id": id };
+    if (onFavorites) dispatch(removeFavorite(data))
+    else dispatch(addFavorite(data))
+  }, [dispatch]);
+
   return {
     loading,
     courses,
+    handleFavorites,
   };
 };

@@ -5,18 +5,18 @@ import CourseItem from '../CourseItem'
 import './courses.css';
 
 const Courses = () => {
-  const { loading, courses } = useCourses();
-
-  const onClickCourse = () => {
-    // TODO: add to favorites
-  };
+  const { loading, courses, handleFavorites } = useCourses();
 
   if (loading) return <div>Loading...</div>;
 
   return (
     <div className="courses">
       {courses.map((item) => (
-        <CourseItem course={item} onClick={onClickCourse} />
+        <CourseItem 
+          key={item.id}
+          course={item}
+          onClick={handleFavorites}
+        />
       ))}
     </div>
   );

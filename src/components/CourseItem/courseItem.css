@@ -2,10 +2,11 @@
   border: 4px;
   cursor: pointer;
   display: flex;
+  align-items: center;
   flex: 1;
   flex-direction: row;
   margin: 10px;
-  min-width: 320px;
+  width: 320px;
   max-height: 110px;
 }
 
@@ -16,6 +17,7 @@ img {
 
 .info {
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   padding: 0 20px;
@@ -29,4 +31,9 @@ p,h5 {
 p {
  font-size: 12px;
  opacity: .6;
+}
+
+.check {
+  width: 20px;
+  height: 20px;
 }
