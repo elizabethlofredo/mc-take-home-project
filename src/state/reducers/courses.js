@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { getCourses } from '../actions/courses';
+import { getCourses, addFavorite, removeFavorite } from '../actions/courses';
 
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
     "description": "Reba teaches her approach to making great country music and navigating the business in 21 video lessons.",
     "instructor_name": "Reba McEntire",
     "instructor_image_url": "https://masterclass.pizza/course-images/images/303/original/1476326407-headshotv10.jpg",
-    "my_list": false,
+    "my_list": true,
     "id": 11
   },
   {
@@ -35,7 +35,7 @@ const initialState = {
     "description": "Carlos Santana teaches you how he creates a distinct, soulful guitar sound that moves the hearts of audiences.",
     "instructor_name": "Carlos Santana",
     "instructor_image_url": "https://masterclass.pizza/course-images/images/2272/original/1544749255-Headshot.jpg",
-    "my_list": false,
+    "my_list": true,
     "id": 92
   },
   {
@@ -71,6 +71,14 @@ const actionHandlers = {
   [getCourses.fulfilled]: (state, { payload }) => {
     state.list = payload;
     state.loading = false;
+  },
+  [addFavorite.fulfilled]: (state, { payload: { courseId } }) => {
+    const index = state.list.findIndex(({ id }) => id === courseId);
+    if (index >= 0) state.list[index].my_list = true;
+  },
+  [removeFavorite.fulfilled]: (state, { payload: { courseId } }) => {
+    const index = state.list.findIndex(({ id }) => id === courseId);
+    if (index >= 0) state.list[index].my_list = false;
   },
 };
 
