@@ -1,14 +1,16 @@
 import React from 'react';
 import { bool, string, func } from 'prop-types';
 
-import './checkBox.css';
+import './checkbox.css';
 
 const CheckBox = ({ onChange, checked = false, label = '' }) => (
-  <label className="checkbox-container" >
-    <input type="checkbox" checked={checked} onChange={onChange} />
-    <span className="checkmark" />
-    {label}
-  </label>
+  <div className="checkbox">
+    <label>
+      <input type="checkbox" checked={checked} onChange={onChange} />
+      <span className="checkmark" />
+      {label}
+    </label>
+  </div>
 );
 
 CheckBox.propTypes = {

@@ -1,10 +1,17 @@
-import Courses from '../src/components/Courses';
+import React from 'react';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
+
+import routes from './routes';
 import './App.css';
 
 const App = () => (
-  <div className="app">
-    <Courses />
-  </div>
+  <BrowserRouter>
+    <Switch>
+      {routes.map((route) => (
+        <Route {...route}>{route.component}</Route>
+      ))}
+    </Switch>
+  </BrowserRouter>
 );
 
 export default App;

@@ -9,7 +9,7 @@ export default () => {
   const dispatch = useDispatch();
   const [offset, setOffset] = useState(0);
   const [favorites, setFavorites] = useState(false);
-  const { list: courses, loading, reachedLastPage } = useSelector(({ courses }) => courses);
+  const { list: courses, reachedLastPage } = useSelector(({ courses }) => courses);
 
   const getNextPage = () => {
     dispatch(getCourses({ limit: PAGE_LIMIT, offset: offset * PAGE_LIMIT }));
@@ -32,7 +32,6 @@ export default () => {
   );
 
   return {
-    loading,
     courses: filteredCourses,
     hasMoreCourses: !reachedLastPage,
     handleFavorites,
