@@ -2,32 +2,29 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import coursesServices from '../../services/coursesService';
 
-export const getCourses = createAsyncThunk('/courses', async (limit, offset) => {
+export const getCourses = createAsyncThunk('/courses', async (params) => {
   try {
-    // TODO: uncomment when connect with backend
-    // const data = await coursesServices.getCourses(limit, offset);
-    return [];
+    const { data } = await coursesServices.getCourses(params);
+    return data;
   } catch ({ response: { data } }) {
     // TODO: handle error
   }
 });
 
-export const addFavorite = createAsyncThunk('/favorites/add', async data => {
+export const addFavorite = createAsyncThunk('/favorites/add', async course => {
   try {
-    // TODO: uncomment when connect with backend
-    //const { course_id } = await coursesServices.addFavorite(data);
-    return { courseId: data.course_id };
-  } catch ({ response: { data } }) {
+    const { data } = await coursesServices.addFavorite(course);
+    return data.course_id;
+  } catch ({ response  }) {
     // TODO: handle error
   }
 });
 
-export const removeFavorite = createAsyncThunk('/favorites/remove', async data => {
+export const removeFavorite = createAsyncThunk('/favorites/remove', async course => {
   try {
-    // TODO: uncomment when connect with backend
-    //const { course_id } = await coursesServices.removeFavorite(data);
-    return { courseId: data.course_id };
-  } catch ({ response: { data } }) {
+    await coursesServices.removeFavorite(course);
+    return course.course_id;
+  } catch ({ response }) {
     // TODO: handle error
   }
 });

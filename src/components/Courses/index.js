@@ -18,14 +18,6 @@ const Courses = () => {
     hasMoreCourses
   } = useCourses();
 
-  if (loading) {
-    return (
-      <div className="flex loading">
-        <Loading />
-      </div>
-    );
-  }
-
   return (
     <>
       <div className="flex filter-container">
