@@ -3,6 +3,7 @@ import { number, string } from 'prop-types';
 import Loader from 'react-loader-spinner';
 
 import { primaryColor } from '../../../constants/common';
+import './loading.css';
 
 const Loading = ({ height = 50, width = 50, color = primaryColor }) => (
   <div className="loading">
