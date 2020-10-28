@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool, string, func } from 'prop-types';
 
-import './checkbox.css';
+import './checkBox.css';
 
 const CheckBox = ({ onChange, checked = false, label = '' }) => (
   <div className="checkbox">

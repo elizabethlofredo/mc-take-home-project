@@ -7,8 +7,8 @@ import './App.css';
 const App = () => (
   <BrowserRouter>
     <Switch>
-      {routes.map((route) => (
-        <Route {...route}>{route.component}</Route>
+      {routes.map(({ component, props}, index) => (
+        <Route key={index} {...props}>{component}</Route>
       ))}
     </Switch>
   </BrowserRouter>
