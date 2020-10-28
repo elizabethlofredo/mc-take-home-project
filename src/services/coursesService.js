@@ -10,7 +10,7 @@ class CoursesServices {
   }
 
   static removeFavorite(course) {
-    return httpClient.delete('/my_list', course);
+    return httpClient.delete('/my_list', { data: course });
   }
 }
 

@@ -5,7 +5,7 @@ import { getCourses, addFavorite, removeFavorite } from '../state/actions/course
 
 const PAGE_LIMIT = 30;
 
-export default () => {
+const useCourses =  () => {
   const dispatch = useDispatch();
   const [offset, setOffset] = useState(0);
   const [favorites, setFavorites] = useState(false);
@@ -40,3 +40,5 @@ export default () => {
     filterOn: favorites,
   };
 };
+
+export default useCourses;
